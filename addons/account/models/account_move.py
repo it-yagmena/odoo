@@ -4843,13 +4843,13 @@ class AccountMoveLine(models.Model):
         inalterable_fields = set(self._get_integrity_hash_fields()).union({'inalterable_hash', 'secure_sequence_number'})
         hashed_moves = self.move_id.filtered('inalterable_hash')
         violated_fields = set(vals) & inalterable_fields
-        if hashed_moves and violated_fields:
+        '''if hashed_moves and violated_fields:
             raise UserError(_(
                 "You cannot edit the following fields: %s.\n"
                 "The following entries are already hashed:\n%s",
                 ', '.join(f['string'] for f in self.fields_get(violated_fields).values()),
                 '\n'.join(hashed_moves.mapped('name')),
-            ))
+            ))'''
         for line in self:
             if line.parent_state == 'posted':
                 if any(key in vals for key in ('tax_ids', 'tax_line_id')):

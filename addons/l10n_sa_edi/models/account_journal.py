@@ -18,6 +18,7 @@ from urllib.parse import urljoin
 
 ZATCA_API_URLS = {
     "sandbox": "https://gw-fatoora.zatca.gov.sa/e-invoicing/developer-portal/",
+    "sandbox": "https://gw-fatoora.zatca.gov.sa/e-invoicing/simulation/",
     "preprod": "https://gw-fatoora.zatca.gov.sa/e-invoicing/simulation/",
     "prod": "https://gw-fatoora.zatca.gov.sa/e-invoicing/core/",
     "apis": {

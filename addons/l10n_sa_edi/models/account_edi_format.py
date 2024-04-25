@@ -12,6 +12,12 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.x509 import load_der_x509_certificate
 
 
+import logging
+_logger = logging.getLogger(__name__)
+
+
+
+
 class AccountEdiFormat(models.Model):
     _inherit = 'account.edi.format'
 
@@ -326,7 +332,7 @@ class AccountEdiFormat(models.Model):
             # the data that depends on it before submitting (UUID, XML content, signature)
             invoice.l10n_sa_chain_index = invoice.journal_id._l10n_sa_edi_get_next_chain_index()
             xml_content = invoice._l10n_sa_generate_unsigned_data()
-
+            _logger.exception(str(xml_content)) # Cijish
         # Generate Invoice name for attachment
         attachment_name = self.env['account.edi.xml.ubl_21.zatca']._export_invoice_filename(invoice)
 
